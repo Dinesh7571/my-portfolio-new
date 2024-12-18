@@ -214,10 +214,27 @@ section {
 
 /* ICONS */
 
+/* Comment out or remove these classes as they're now handled by Tailwind */
+/*
 .icon {
   cursor: pointer;
   height: 2rem;
 }
+
+.arrow {
+  position: absolute;
+  right: -5rem;
+  bottom: 2.5rem;
+}
+
+.contact-icon {
+  cursor: default;
+}
+
+.email-icon {
+  height: 2.5rem;
+}
+*/
 
 /* BUTTONS */
 
@@ -291,12 +308,6 @@ section {
 
 .about-pic {
   border-radius: 2rem;
-}
-
-.arrow {
-  position: absolute;
-  right: -5rem;
-  bottom: 2.5rem;
 }
 
 .details-container {
@@ -416,14 +427,6 @@ article .icon {
 
 .contact-info-container p {
   font-size: larger;
-}
-
-.contact-icon {
-  cursor: default;
-}
-
-.email-icon {
-  height: 2.5rem;
 }
 
 /* FOOTER SECTION */

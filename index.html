@@ -1,388 +1,533 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
+    <title>Dinesh Kannaujiya | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'primary': '#0F172A',
+              'secondary': '#1E293B',
+              'accent-1': '#4F46E5', // Indigo
+              'accent-2': '#7C3AED', // Purple
+              'accent-3': '#2563EB', // Blue
+              'text-light': '#F8FAFC',
+              'text-dim': '#94A3B8'
+            },
+            animation: {
+              'gradient': 'gradient 8s linear infinite',
+              'float': 'float 3s ease-in-out infinite',
+              'glow': 'glow 2s ease-in-out infinite'
+            },
+            keyframes: {
+              gradient: {
+                '0%, 100%': {
+                  'background-size': '200% 200%',
+                  'background-position': 'left center'
+                },
+                '50%': {
+                  'background-size': '200% 200%',
+                  'background-position': 'right center'
+                }
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' }
+              },
+              glow: {
+                '0%, 100%': { opacity: 1 },
+                '50%': { opacity: 0.6 }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+      body {
+        font-family: 'Space Grotesk', sans-serif;
+        background: linear-gradient(to bottom right, #0F172A, #1E293B);
+      }
+      .gradient-text {
+        background: linear-gradient(to right, #4F46E5, #7C3AED, #2563EB);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: gradient 8s linear infinite;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .modern-scroll::-webkit-scrollbar {
+        width: 8px;
+      }
+      
+      .modern-scroll::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+      }
+      
+      .modern-scroll::-webkit-scrollbar-thumb {
+        background: linear-gradient(to bottom, #4F46E5, #7C3AED);
+        border-radius: 4px;
+      }
+      
+      .skill-card {
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .skill-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s;
+      }
+      
+      .skill-card:hover::before {
+        transform: translateX(100%);
+      }
+    </style>
   </head>
-  <body>
-    <nav id="desktop-nav">
-      <div class="logo">Dinesh Kannaujiya</div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
+  <body class="text-text-light min-h-screen">
+    <!-- Animated background shapes -->
+    <div class="fixed inset-0 -z-10 overflow-hidden">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-1/20 rounded-full filter blur-3xl animate-float"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-2/20 rounded-full filter blur-3xl animate-float" style="animation-delay: -2s"></div>
+        <div class="absolute top-1/2 left-1/2 w-96 h-96 bg-accent-3/20 rounded-full filter blur-3xl animate-float" style="animation-delay: -4s"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 glass-card">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-20">
+                <a href="#" class="text-2xl font-bold gradient-text">DK</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="hover:text-accent-1 transition-all hover:scale-110">About</a>
+                    <a href="#experience" class="hover:text-accent-2 transition-all hover:scale-110">Experience</a>
+                    <a href="#projects" class="hover:text-accent-3 transition-all hover:scale-110">Projects</a>
+                    <a href="#contact" class="hover:text-accent-1 transition-all hover:scale-110">Contact</a>
+                </div>
+            </div>
+        </div>
     </nav>
-    <nav id="hamburger-nav">
-      <div class="logo">Dinesh Kannaujiya</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen pt-20 flex items-center">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <!-- Profile Image with animated gradient border -->
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-accent-1 via-accent-2 to-accent-3 rounded-full opacity-75 group-hover:opacity-100 blur transition duration-1000 group-hover:duration-200 animate-gradient"></div>
+                    <div class="relative w-64 h-64 rounded-full overflow-hidden">
+                        <img 
+                            src="./assets/profile-pic.png"
+                            alt="profile"
+                            class="w-full h-full object-cover transform transition duration-500 group-hover:scale-110"
+                        />
+                    </div>
+                </div>
+
+                <!-- Hero Text -->
+                <div class="flex-1 text-center md:text-left space-y-6">
+                    <h2 class="text-accent-1 text-xl font-medium">Hello, I'm</h2>
+                    <h1 class="text-5xl md:text-7xl font-bold gradient-text">
+                        Dinesh Kannaujiya
+                    </h1>
+                    <p class="text-2xl text-text-dim">App Developer</p>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap gap-6 justify-center md:justify-start">
+                        <button onclick="window.open('./assets/dineshresume.pdf')"
+                                class="px-8 py-4 rounded-full bg-gradient-to-r from-accent-1 to-accent-2 hover:from-accent-2 hover:to-accent-1 transform hover:scale-105 transition-all">
+                            Download CV
+                        </button>
+                        <button onclick="location.href='./#contact'"
+                                class="px-8 py-4 rounded-full border-2 border-accent-1 hover:bg-accent-1/10 transform hover:scale-105 transition-all">
+                            Contact Me
+                        </button>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="flex gap-6 justify-center md:justify-start pt-6">
+                        <a href="https://linkedin.com/in/dinesh-kannaujiya-985719205" 
+                           class="p-3 rounded-full glass-card hover:bg-accent-1/20 transform hover:scale-110 transition-all">
+                            <i class="fab fa-linkedin-in text-2xl text-accent-1"></i>
+                        </a>
+                        <a href="https://github.com/Dinesh7571" 
+                           class="p-3 rounded-full glass-card hover:bg-accent-2/20 transform hover:scale-110 transition-all">
+                            <i class="fab fa-github text-2xl text-accent-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
-      </div>
-    </nav>
-    <section id="profile">
-      <div class="section__pic-container">
-        <img class="profile-img" src="./assets/profile-pic.png" alt="profile picture" />
-      </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Dinesh Kannaujiya</h1>
-        <p class="section__text__p2">Frontend Developer</p>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2"
-            onclick="window.open('./assets/dineshresume.pdf')"
-          >
-            Download CV
-          </button>
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">
-            Contact Info
-          </button>
-        </div>
-        <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://linkedin.com/in/dinesh-kannaujiya-985719205'"
-          />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/Dinesh7571'"
-          />
-        </div>
-      </div>
     </section>
-    <section id="about">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
-      <div class="section-container">
-        <div class="section__pic-container">
-          <img
-            src="./assets/about-pic.jpg"
-            alt="Profile picture"
-            class="about-pic"
-          />
-        </div>
-        <div class="about-details-container">
-          <div class="about-containers">
-            <div class="details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
-              <h3>Experience</h3>
-              <p>1+ years <br />Frontend Development</p>
+
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">About Me</h2>
+            <div class="flex flex-col md:flex-row gap-12">
+                <!-- About Content -->
+                <div class="flex-1 space-y-6">
+                    <p class="text-lg text-text-dim leading-relaxed">
+                        I am a passionate app developer currently working as an App Developer Intern at Pinkmoon Technologies. 
+                        With 3 months of hands-on experience, I specialize in creating responsive and user-friendly mobile applications 
+                        using React Native and modern web technologies.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="glass-card p-6 rounded-xl group hover:bg-accent-1/10 transition-all">
+                            <div class="flex items-center gap-4 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-accent-1/20 flex items-center justify-center">
+                                    <i class="fas fa-briefcase text-xl text-accent-1"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold">Experience</h3>
+                            </div>
+                            <p class="text-text-dim">3 Months</p>
+                            <p class="text-xs text-text-dim mt-1">App Developer Intern</p>
+                        </div>
+                        <div class="glass-card p-6 rounded-xl group hover:bg-accent-2/10 transition-all">
+                            <div class="flex items-center gap-4 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-accent-2/20 flex items-center justify-center">
+                                    <i class="fas fa-code text-xl text-accent-2"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold">Projects</h3>
+                            </div>
+                            <p class="text-text-dim">6+ Completed</p>
+                            <p class="text-xs text-text-dim mt-1">Mobile & Web Apps</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skills -->
+                <div class="flex-1">
+                    <h3 class="text-2xl font-semibold mb-6">My Skills</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="glass-card p-4 rounded-lg text-center skill-card group hover:bg-accent-1/10 transition-all">
+                            <div class="relative">
+                                <div class="absolute inset-0 bg-gradient-to-r from-accent-1/20 to-accent-2/20 blur-lg group-hover:blur-xl transition-all"></div>
+                                <i class="fab fa-react text-4xl text-accent-1 mb-2 relative z-10"></i>
+                            </div>
+                            <p class="font-medium">React Native</p>
+                            <p class="text-sm text-text-dim">Learning</p>
+                            <!-- Add progress bar -->
+                            <div class="w-full h-1 bg-gray-700 rounded-full mt-2">
+                                <div class="h-full w-[40%] bg-gradient-to-r from-accent-1 to-accent-2 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="glass-card p-4 rounded-lg text-center">
+                            <i class="fab fa-js text-4xl text-accent-2 mb-2"></i>
+                            <p>JavaScript</p>
+                            <p class="text-sm text-text-dim">Intermediate</p>
+                        </div>
+                        <div class="glass-card p-4 rounded-lg text-center">
+                            <i class="fab fa-html5 text-4xl text-accent-1 mb-2"></i>
+                            <p>HTML</p>
+                            <p class="text-sm text-text-dim">Experienced</p>
+                        </div>
+                        <div class="glass-card p-4 rounded-lg text-center">
+                            <i class="fab fa-css3-alt text-4xl text-accent-2 mb-2"></i>
+                            <p>CSS</p>
+                            <p class="text-sm text-text-dim">Experienced</p>
+                        </div>
+                        <div class="glass-card p-4 rounded-lg text-center">
+                            <i class="fab fa-node-js text-4xl text-accent-1 mb-2"></i>
+                            <p>Node.js</p>
+                            <p class="text-sm text-text-dim">Learning</p>
+                        </div>
+                        <div class="glass-card p-4 rounded-lg text-center">
+                            <i class="fab fa-git-alt text-4xl text-accent-2 mb-2"></i>
+                            <p>Git</p>
+                            <p class="text-sm text-text-dim">Intermediate</p>
+                        </div>
+                        <div class="glass-card p-4 rounded-lg text-center">
+                            <i class="fas fa-server text-4xl text-accent-1 mb-2"></i>
+                            <p>Express.js</p>
+                            <p class="text-sm text-text-dim">Learning</p>
+                        </div>
+                        <div class="glass-card p-4 rounded-lg text-center">
+                            <i class="fas fa-database text-4xl text-accent-2 mb-2"></i>
+                            <p>Firebase</p>
+                            <p class="text-sm text-text-dim">Basic</p>
+                        </div>
+                        <div class="glass-card p-4 rounded-lg text-center">
+                            <div class="flex justify-center items-center mb-2">
+                                <svg class="w-10 h-10 text-accent-1" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"/>
+                                </svg>
+                            </div>
+                            <p>TypeScript</p>
+                            <p class="text-sm text-text-dim">Basic</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="details-container">
-              <img
-                src="./assets/education.png"
-                alt="Education icon"
-                class="icon"
-              />
-              <h3>Education</h3>
-              <p>B.tech Bachelors Degree</p>
-            </div>
-          </div>
-          <div class="text-container">
-            <p>
-              Hello there! I'm a passionate and dynamic full-stack developer hailing 
-              from the vibrant state of Uttar Pradesh, India. With a solid foundation 
-              in both front-end and back-end technologies, I bring a versatile skill
-               set to the table. My expertise extends to crafting seamless user
-                experiences and developing cross-platform mobile applications using 
-                React Native. I thrive on turning ideas into reality through clean,
-                 efficient, and scalable code. Constantly seeking new challenges,
-                  I stay at the forefront of technological advancements to ensure my 
-                  work reflects the latest industry standards. When I'm not immersed 
-                  in coding, you can find me exploring innovative solutions, collaborating with 
-                  like-minded professionals, or contributing to the ever-evolving tech community.
-                   Let's build something amazing together!
-            </p>
-          </div>
         </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#experience'"
-      />
     </section>
-    <section id="experience">
-      <p class="section__text__p1">Explore My</p>
-      <h1 class="title">Experience</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <h2 class="experience-sub-title">Frontend Development</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>HTML</h3>
-                  <p>Experienced</p>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">My Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Truecaller Clone -->
+                <div class="glass-card rounded-xl overflow-hidden group hover:scale-105 transition-all duration-300">
+                    <div class="relative overflow-hidden">
+                        <img src="./assets/truecaller.png" alt="Truecaller Clone" 
+                             class="w-full h-48 object-cover transform group-hover:scale-110 transition-all duration-500"/>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Truecaller Clone</h3>
+                        <p class="text-text-dim mb-4">A feature-rich caller ID app built with React Native and Kotlin modules.</p>
+                        <div class="flex gap-4">
+                            <a href="https://github.com/Dinesh7571/Truecaller-clone-react-native" 
+                               class="px-4 py-2 rounded-full bg-accent-1/20 hover:bg-accent-1 text-accent-1 hover:text-white transition-all">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                            <a href="#" 
+                               class="px-4 py-2 rounded-full bg-accent-2/20 hover:bg-accent-2 text-accent-2 hover:text-white transition-all">
+                                <i class="fas fa-play mr-2"></i>Demo
+                            </a>
+                        </div>
+                    </div>
                 </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>CSS</h3>
-                  <p>Experienced</p>
+
+                <!-- Baymax -->
+                <div class="glass-card rounded-xl overflow-hidden group hover:scale-105 transition-all duration-300">
+                    <div class="relative overflow-hidden">
+                        <img src="./assets/baymax.png" alt="Baymax" 
+                             class="w-full h-48 object-cover transform group-hover:scale-110 transition-all duration-500"/>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Baymax Health App</h3>
+                        <p class="text-text-dim mb-4">Personal healthcare companion with AI-powered health tips.</p>
+                        <div class="flex gap-4">
+                            <a href="https://github.com/Dinesh7571/Baymax" 
+                               class="px-4 py-2 rounded-full bg-accent-1/20 hover:bg-accent-1 text-accent-1 hover:text-white transition-all">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                            <a href="#" 
+                               class="px-4 py-2 rounded-full bg-accent-2/20 hover:bg-accent-2 text-accent-2 hover:text-white transition-all">
+                                <i class="fas fa-play mr-2"></i>Demo
+                            </a>
+                        </div>
+                    </div>
                 </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>JavaScript</h3>
-                  <p>Intermediate</p>
+
+                <!-- E-commerce -->
+                <div class="glass-card rounded-xl overflow-hidden group hover:scale-105 transition-all duration-300">
+                    <div class="relative overflow-hidden">
+                        <img src="./assets/ecommerce.jpg" alt="E-commerce" 
+                             class="w-full h-48 object-cover transform group-hover:scale-110 transition-all duration-500"/>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">E-commerce App</h3>
+                        <p class="text-text-dim mb-4">Full-featured shopping app with React Native.</p>
+                        <div class="flex gap-4">
+                            <a href="https://github.com/Dinesh7571/Ecommerce-in-react-native" 
+                               class="px-4 py-2 rounded-full bg-accent-1/20 hover:bg-accent-1 text-accent-1 hover:text-white transition-all">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                            <a href="https://youtube.com/shorts/snl_MiUqJTw?si=JHSi3zkEBiE9liP8" 
+                               class="px-4 py-2 rounded-full bg-accent-2/20 hover:bg-accent-2 text-accent-2 hover:text-white transition-all">
+                                <i class="fas fa-play mr-2"></i>Demo
+                            </a>
+                        </div>
+                    </div>
                 </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>React js</h3>
-                  <p>Intermediate</p>
+
+                <!-- Laundry App -->
+                <div class="glass-card rounded-xl overflow-hidden group hover:scale-105 transition-all duration-300">
+                    <div class="relative overflow-hidden">
+                        <img src="./assets/laundry-app.png" alt="Laundry App" 
+                             class="w-full h-48 object-cover transform group-hover:scale-110 transition-all duration-500"/>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Laundry App</h3>
+                        <p class="text-text-dim mb-4">A React Native app for laundry service management.</p>
+                        <div class="flex gap-4">
+                            <a href="https://github.com/Dinesh7571/Laundry" 
+                               class="px-4 py-2 rounded-full bg-accent-1/20 hover:bg-accent-1 text-accent-1 hover:text-white transition-all">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                            <a href="#" 
+                               class="px-4 py-2 rounded-full bg-accent-2/20 hover:bg-accent-2 text-accent-2 hover:text-white transition-all">
+                                <i class="fas fa-play mr-2"></i>Demo
+                            </a>
+                        </div>
+                    </div>
                 </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>React Native</h3>
-                  <p>Intermediate</p>
+
+                <!-- URL Shortener -->
+                <div class="glass-card rounded-xl overflow-hidden group hover:scale-105 transition-all duration-300">
+                    <div class="relative overflow-hidden">
+                        <img src="./assets/project3.png" alt="URL Shortener" 
+                             class="w-full h-48 object-cover transform group-hover:scale-110 transition-all duration-500"/>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">URL Shortener</h3>
+                        <p class="text-text-dim mb-4">A web application to create shortened URLs.</p>
+                        <div class="flex gap-4">
+                            <a href="https://github.com/Dinesh7571/Url-Shortner" 
+                               class="px-4 py-2 rounded-full bg-accent-1/20 hover:bg-accent-1 text-accent-1 hover:text-white transition-all">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                            <a href="https://urlshortner14.vercel.app/" 
+                               class="px-4 py-2 rounded-full bg-accent-2/20 hover:bg-accent-2 text-accent-2 hover:text-white transition-all">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </a>
+                        </div>
+                    </div>
                 </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Tailwind</h3>
-                  <p>Basic</p>
+
+                <!-- SiteWatch Pro -->
+                <div class="glass-card rounded-xl overflow-hidden group hover:scale-105 transition-all duration-300">
+                    <div class="relative overflow-hidden">
+                        <img src="./assets/sitewatchpro.png" alt="SiteWatch Pro" 
+                             class="w-full h-48 object-cover transform group-hover:scale-110 transition-all duration-500"/>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <!-- Development Badge -->
+                        <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-accent-2/80 text-white text-sm font-medium">
+                            In Development
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">SiteWatch Pro</h3>
+                        <p class="text-text-dim mb-4">A real-time website monitoring system with uptime tracking, domain expiration alerts, and instant notifications.</p>
+                        <div class="flex gap-4">
+                            <a href="https://github.com/Dinesh7571/SiteWatch-pro" 
+                               class="px-4 py-2 rounded-full bg-accent-1/20 hover:bg-accent-1 text-accent-1 hover:text-white transition-all">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                            <a href="https://site-watch-pro.vercel.app/" 
+                               class="px-4 py-2 rounded-full bg-accent-2/20 hover:bg-accent-2 text-accent-2 hover:text-white transition-all">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </a>
+                        </div>
+                    </div>
                 </div>
-              </article>
             </div>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">Frontend Development</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Firebase</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Node JS</h3>
-                  <p>Learning..</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Express JS</h3>
-                  <p>Learning</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Git</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-            </div>
-          </div>
         </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#projects'"
-      />
     </section>
-    <section id="projects">
-      <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title">Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/ecommerce.jpg"
-                alt="Project 1"
-                class="project-img"
-              />
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Get In Touch</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <a href="mailto:kannaujiya00000@gmail.com" 
+                   class="glass-card p-6 rounded-xl flex items-center gap-4 group hover:bg-accent-1/10 transform hover:scale-105 transition-all">
+                    <div class="w-12 h-12 rounded-full bg-accent-1/20 flex items-center justify-center">
+                        <i class="fas fa-envelope text-2xl text-accent-1"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold mb-1">Email</h3>
+                        <p class="text-text-dim text-sm group-hover:text-accent-1">kannaujiya00000@gmail.com</p>
+                    </div>
+                </a>
+
+                <a href="https://linkedin.com/in/dinesh-kannaujiya-985719205" 
+                   class="glass-card p-6 rounded-xl flex items-center gap-4 group hover:bg-accent-2/10 transform hover:scale-105 transition-all">
+                    <div class="w-12 h-12 rounded-full bg-accent-2/20 flex items-center justify-center">
+                        <i class="fab fa-linkedin-in text-2xl text-accent-2"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold mb-1">LinkedIn</h3>
+                        <p class="text-text-dim text-sm group-hover:text-accent-2">Connect with me</p>
+                    </div>
+                </a>
+
+                <a href="tel:+918808090282" 
+                   class="glass-card p-6 rounded-xl flex items-center gap-4 group hover:bg-accent-3/10 transform hover:scale-105 transition-all">
+                    <div class="w-12 h-12 rounded-full bg-accent-3/20 flex items-center justify-center">
+                        <i class="fas fa-phone text-2xl text-accent-3"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold mb-1">Phone</h3>
+                        <p class="text-text-dim text-sm group-hover:text-accent-3">+91 8808090282</p>
+                    </div>
+                </a>
             </div>
-            <h2 class="experience-sub-title project-title">Ecommerce</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/Dinesh7571/ecom'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://eco-mall.netlify.app/'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/laundry-app.png"
-                alt="Project 2"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Laundy App react native</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/Dinesh7571/Laundry'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project3.png"
-                alt="Project 3"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Url Shortner</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/Dinesh7571/Url-Shortner'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://urlshortner14.vercel.app/'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
         </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
     </section>
-    <section id="contact">
-      <p class="section__text__p1">Get in Touch</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="./assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p><a href="mailto:kannaujiya00000@gmail.com">kannaujiya00000@gmail.com</a></p>
+
+    <!-- Footer -->
+    <footer class="py-8 glass-card mt-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-text-dim">© 2024 Dinesh Kannaujiya. All rights reserved.</p>
+                <div class="flex gap-8">
+                    <a href="#about" class="hover:text-accent-1 transition-all">About</a>
+                    <a href="#projects" class="hover:text-accent-2 transition-all">Projects</a>
+                    <a href="#contact" class="hover:text-accent-3 transition-all">Contact</a>
+                </div>
+            </div>
         </div>
-        <div class="contact-info-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="LinkedIn icon"
-            class="icon contact-icon"
-          />
-          <p><a href="https://www.linkedin.com/in/dinesh-kannaujiya-985719205/">LinkedIn</a></p>
-        </div>
-      </div>
-    </section>
-    <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-      <p>Copyright &#169; 2023 Dinesh Kannaujiya. All Rights Reserved.</p>
     </footer>
-    <script src="script.js"></script>
+
+    <!-- Add a mobile menu button in navbar -->
+    <button class="md:hidden p-2 rounded-lg hover:bg-accent-1/10 transition-all" onclick="toggleMenu()">
+        <i class="fas fa-bars text-2xl text-accent-1"></i>
+    </button>
+
+    <!-- Add mobile menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-primary/95 backdrop-blur-lg -translate-x-full transition-transform duration-300 z-40">
+        <div class="flex flex-col items-center justify-center h-full space-y-8">
+            <a href="#about" class="text-2xl hover:text-accent-1 transition-all" onclick="toggleMenu()">About</a>
+            <a href="#experience" class="text-2xl hover:text-accent-2 transition-all" onclick="toggleMenu()">Experience</a>
+            <a href="#projects" class="text-2xl hover:text-accent-3 transition-all" onclick="toggleMenu()">Projects</a>
+            <a href="#contact" class="text-2xl hover:text-accent-1 transition-all" onclick="toggleMenu()">Contact</a>
+        </div>
+    </div>
+
+    <!-- Add this script at the end of body -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('-translate-x-full');
+        }
+
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach((section) => {
+            observer.observe(section);
+        });
+    </script>
   </body>
 </html>
