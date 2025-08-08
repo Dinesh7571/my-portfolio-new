@@ -1,1 +1,0 @@
-https://dineshk.netlify.app
