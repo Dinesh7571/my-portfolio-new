@@ -101,7 +101,8 @@ export default function MatrixProfile({onSwitch}) {
   const matrixChars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン'
 
   return (
-    <div className="min-h-screen bg-black text-green-400 font-mono relative overflow-hidden">
+    <div className="min-h-screen bg-black text-green-400 font-mono text-sm sm:text-base relative overflow-hidden">
+
       {/* Matrix Rain Background */}
       <div className="fixed inset-0 pointer-events-none opacity-10">
         {matrixRain.map((drop, i) => (
@@ -134,8 +135,8 @@ export default function MatrixProfile({onSwitch}) {
 
           {/* Version Toggle */}
           <span
-  className="ml-4 font-mono text-blue-300 border border-blue-500 px-3 py-1 cursor-pointer 
-             hover:bg-blue-500 hover:text-black transition 
+  className="ml-4 font-mono text-green-300 border border-green-500 px-3 py-1 cursor-pointer 
+             hover:bg-green-500 hover:text-black transition 
              shadow-[inset_0_0_5px_rgba(0,255,255,0.5),0_0_5px_rgba(0,255,255,0.3)] 
              active:translate-y-[1px] active:shadow-[inset_0_0_8px_rgba(0,255,255,0.8)]
              rounded-sm"
@@ -238,7 +239,7 @@ export default function MatrixProfile({onSwitch}) {
                 </div>
                 <div className="border-l-2 border-green-500 pl-4">
                   <div className="text-green-300 font-bold">IT Developer — Gyankosha</div>
-                  <div className="text-green-500 text-sm">Feb 2025 — Present · Gorakhpur</div>
+                  <div className="text-green-500 text-sm">Feb 2025 — Jun 2025 · Gorakhpur</div>
                   <div className="text-sm">Developed and maintained e-learning platform web & mobile</div>
                 </div>
                 <div className="border-l-2 border-green-500 pl-4">
@@ -250,23 +251,26 @@ export default function MatrixProfile({onSwitch}) {
             </div>
 
             {/* Contact Section */}
-            <div className="border border-green-500 bg-black/80 backdrop-blur-sm p-6">
-              <TerminalLine prefix="$">
-                <TypeWriter text="cat /contact/info.txt" delay={80} />
-              </TerminalLine>
-              <div className="ml-4 space-y-2">
-                {socials.map((social, i) => (
-                  <div key={social.name} className="flex items-center gap-2 text-green-400">
-                    <span className="text-green-500">{`>`}</span>
-                    <span className="text-lg">{social.icon}</span>
-                    <a href={social.url} target="_blank" rel="noreferrer" 
-                       className="hover:text-green-300 transition-colors underline">
-                      <TypeWriter text={`${social.name}: ${social.url}`} delay={30 + i * 200} />
-                    </a>
-                  </div>
-                ))}
-              </div>
-            </div>
+<div className="border border-green-500 bg-black/80 backdrop-blur-sm p-6">
+  <TerminalLine prefix="$">
+    <TypeWriter text="cat /contact/info.txt" delay={80} />
+  </TerminalLine>
+  <div className="ml-4 flex gap-4 mt-3">
+    {socials.map((social, i) => (
+      <a
+        key={social.name}
+        href={social.url}
+        target="_blank"
+        rel="noreferrer"
+        className="text-green-400 hover:text-green-300 transition-colors text-xl sm:text-2xl"
+        style={{ fontSize: "1.2rem" }}
+      >
+        {social.icon}
+      </a>
+    ))}
+  </div>
+</div>
+
 
             {/* Footer */}
             <div className="border border-green-500 bg-black/80 backdrop-blur-sm p-4 text-center">
