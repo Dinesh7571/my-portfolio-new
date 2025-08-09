@@ -87,58 +87,60 @@ export default function Profile({onSwitch}){
       
       {/* Glass Header */}
       <header
-        className={`sticky top-0 z-50 backdrop-blur-md border-b transition-all duration-300 ${
-          isDark || isDiscoMode
-            ? 'bg-black/30 border-white/10'
-            : 'bg-white/30 border-gray-200/50'
+  className={`sticky top-0 z-50 backdrop-blur-md border-b transition-all duration-300 ${
+    isDark || isDiscoMode
+      ? 'bg-black/30 border-white/10'
+      : 'bg-white/30 border-gray-200/50'
+  }`}
+>
+  <div className="max-w-5xl mx-auto px-4 py-3 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+    {/* Name */}
+    <h1
+      className={`text-lg sm:text-xl font-semibold transition-colors duration-300 ${
+        isDark || isDiscoMode ? 'text-white' : 'text-gray-900'
+      }`}
+    >
+      Dinesh Kannaujiya
+    </h1>
+
+    {/* Buttons */}
+    <div className="flex flex-wrap gap-2">
+      {/* Disco Button */}
+      <button
+        onClick={toggleDisco}
+        className={`px-3 py-2 rounded-full backdrop-blur-sm border transition-all duration-300 hover:scale-105 text-xs sm:text-sm font-medium ${
+          isDiscoMode
+            ? 'bg-white/20 border-white/30 text-white shadow-lg animate-pulse'
+            : isDark
+            ? 'bg-gradient-to-r from-purple-500 to-pink-500 border-white/20 text-white hover:from-purple-400 hover:to-pink-400'
+            : 'bg-gradient-to-r from-purple-600 to-pink-600 border-gray-300/50 text-white hover:from-purple-500 hover:to-pink-500'
         }`}
       >
-        <div className="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1
-            className={`text-xl font-semibold transition-colors duration-300 ${
-              isDark || isDiscoMode ? 'text-white' : 'text-gray-900'
-            }`}
-          >
-            Dinesh Kannaujiya
-          </h1>
+        {isDiscoMode ? '🕺 DISCO ON' : '✨ DISCO'}
+      </button>
 
-          <div className="flex gap-2">
-            {/* Disco Button */}
-            <button
-              onClick={toggleDisco}
-              className={`px-4 py-2 rounded-full backdrop-blur-sm border transition-all duration-300 hover:scale-105 text-sm font-medium ${
-                isDiscoMode
-                  ? 'bg-white/20 border-white/30 text-white shadow-lg animate-pulse'
-                  : isDark
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 border-white/20 text-white hover:from-purple-400 hover:to-pink-400'
-                  : 'bg-gradient-to-r from-purple-600 to-pink-600 border-gray-300/50 text-white hover:from-purple-500 hover:to-pink-500'
-              }`}
-            >
-              {isDiscoMode ? '🕺 DISCO ON' : '✨ DISCO'}
-            </button>
+      {/* Theme Toggle */}
+      <button
+        onClick={toggleTheme}
+        className={`p-2 sm:p-3 rounded-full backdrop-blur-sm border transition-all duration-300 hover:scale-110 ${
+          isDark || isDiscoMode
+            ? 'bg-white/10 border-white/20 text-gray-300 hover:text-white hover:bg-white/20'
+            : 'bg-black/10 border-gray-300/50 text-gray-600 hover:text-gray-900 hover:bg-black/20'
+        }`}
+      >
+        {isDark ? <FiSun className="w-5 h-5" /> : <FiMoon className="w-5 h-5" />}
+      </button>
 
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className={`p-3 rounded-full backdrop-blur-sm border transition-all duration-300 hover:scale-110 ${
-                isDark || isDiscoMode
-                  ? 'bg-white/10 border-white/20 text-gray-300 hover:text-white hover:bg-white/20'
-                  : 'bg-black/10 border-gray-300/50 text-gray-600 hover:text-gray-900 hover:bg-black/20'
-              }`}
-            >
-              {isDark ? <FiSun className="w-5 h-5" /> : <FiMoon className="w-5 h-5" />}
-            </button>
-
-            {/* Switch to V2 Button */}
-            <button
-              onClick={onSwitch}
-              className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
-            >
-              Switch to V2
-            </button>
-          </div>
-        </div>
-      </header>
+      {/* Switch to V2 Button */}
+      <button
+        onClick={onSwitch}
+        className="px-3 py-2 rounded-full backdrop-blur-sm border transition-all duration-300 hover:scale-105 text-xs sm:text-sm font-medium"
+      >
+        Switch to V2
+      </button>
+    </div>
+  </div>
+</header>
 
       <div className="p-4 pt-8">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
