@@ -48,7 +48,7 @@ const discoColors = [
   'from-orange-900 to-pink-900'
 ]
 
-export default function Profile(){
+export default function Profile({onSwitch}){
   const [isDark, setIsDark] = useState(true)
   const [isDiscoMode, setIsDiscoMode] = useState(false)
   const [currentColorIndex, setCurrentColorIndex] = useState(0)
@@ -86,18 +86,22 @@ export default function Profile(){
     }`}>
       
       {/* Glass Header */}
-      <header className={`sticky top-0 z-50 backdrop-blur-md border-b transition-all duration-300 ${
-        isDark || isDiscoMode
-          ? 'bg-black/30 border-white/10' 
-          : 'bg-white/30 border-gray-200/50'
-      }`}>
+      <header
+        className={`sticky top-0 z-50 backdrop-blur-md border-b transition-all duration-300 ${
+          isDark || isDiscoMode
+            ? 'bg-black/30 border-white/10'
+            : 'bg-white/30 border-gray-200/50'
+        }`}
+      >
         <div className="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className={`text-xl font-semibold transition-colors duration-300 ${
-            isDark || isDiscoMode ? 'text-white' : 'text-gray-900'
-          }`}>
+          <h1
+            className={`text-xl font-semibold transition-colors duration-300 ${
+              isDark || isDiscoMode ? 'text-white' : 'text-gray-900'
+            }`}
+          >
             Dinesh Kannaujiya
           </h1>
-          
+
           <div className="flex gap-2">
             {/* Disco Button */}
             <button
@@ -105,25 +109,32 @@ export default function Profile(){
               className={`px-4 py-2 rounded-full backdrop-blur-sm border transition-all duration-300 hover:scale-105 text-sm font-medium ${
                 isDiscoMode
                   ? 'bg-white/20 border-white/30 text-white shadow-lg animate-pulse'
-                  : isDark 
-                    ? 'bg-gradient-to-r from-purple-500 to-pink-500 border-white/20 text-white hover:from-purple-400 hover:to-pink-400' 
-                    : 'bg-gradient-to-r from-purple-600 to-pink-600 border-gray-300/50 text-white hover:from-purple-500 hover:to-pink-500'
+                  : isDark
+                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 border-white/20 text-white hover:from-purple-400 hover:to-pink-400'
+                  : 'bg-gradient-to-r from-purple-600 to-pink-600 border-gray-300/50 text-white hover:from-purple-500 hover:to-pink-500'
               }`}
-              aria-label="Toggle disco mode"
             >
               {isDiscoMode ? '🕺 DISCO ON' : '✨ DISCO'}
             </button>
 
+            {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
               className={`p-3 rounded-full backdrop-blur-sm border transition-all duration-300 hover:scale-110 ${
                 isDark || isDiscoMode
-                  ? 'bg-white/10 border-white/20 text-gray-300 hover:text-white hover:bg-white/20' 
+                  ? 'bg-white/10 border-white/20 text-gray-300 hover:text-white hover:bg-white/20'
                   : 'bg-black/10 border-gray-300/50 text-gray-600 hover:text-gray-900 hover:bg-black/20'
               }`}
-              aria-label="Toggle theme"
             >
               {isDark ? <FiSun className="w-5 h-5" /> : <FiMoon className="w-5 h-5" />}
+            </button>
+
+            {/* Switch to V2 Button */}
+            <button
+              onClick={onSwitch}
+              className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
+            >
+              Switch to V2
             </button>
           </div>
         </div>
