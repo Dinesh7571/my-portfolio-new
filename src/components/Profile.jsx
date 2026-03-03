@@ -307,7 +307,7 @@ export default function Portfolio() {
               </h1>
 
               <p className="text-[clamp(13px,1.8vw,16px)] text-neutral-500 dark:text-neutral-400 max-w-[460px] leading-[1.85] mb-8">
-                Full Stack &amp; Mobile App Developer crafting high-quality React Native apps
+                Full Stack web &amp; Mobile App Developer crafting high-quality React Native apps
                 and React.js web products. Based in Uttar Pradesh, India.
               </p>
 
