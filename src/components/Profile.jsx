@@ -283,24 +283,7 @@ export default function Portfolio() {
           </button>
         </div>
 
-        {/* mobile scrollable tabs */}
-        <div className="sm:hidden overflow-x-auto border-t border-neutral-200 dark:border-neutral-800 scrollbar-none">
-          <div className="flex px-4 py-2 gap-1 w-max">
-            {NAV_SECTIONS.map((s) => (
-              <button
-                key={s}
-                onClick={() => scrollTo(s)}
-                className={`px-4 py-[6px] rounded-full text-[13px] font-medium capitalize whitespace-nowrap transition-all duration-200
-                  ${active === s
-                    ? "bg-accent text-[#0a0a0a]"
-                    : "text-neutral-500 dark:text-neutral-400"
-                  }`}
-              >
-                {s}
-              </button>
-            ))}
-          </div>
-        </div>
+        
       </nav>
 
       {/* ═══════════ PAGE CONTENT ═══════════ */}
