@@ -590,7 +590,7 @@ export default function Portfolio() {
 
         {/* footer */}
         <footer className="border-t border-neutral-200 dark:border-neutral-800 py-7 flex flex-wrap justify-between items-center gap-3">
-          <span className="text-[13px] text-neutral-400 dark:text-neutral-500">© 2025 Dinesh Kannaujiya</span>
+          <span className="text-[13px] text-neutral-400 dark:text-neutral-500">© {new Date().getFullYear()} Dinesh Kannaujiya</span>
           <span className="text-[13px] text-neutral-400 dark:text-neutral-500">
             Built with <span className="text-accent font-semibold">React</span> &amp; <span className="text-accent font-semibold">Tailwind</span>
           </span>
