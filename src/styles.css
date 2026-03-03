@@ -15,3 +15,18 @@ body{
 .bg-dark {
   background: #0b0b0d;
 }
+
+/* Hide scrollbar for Chrome, Safari and Edge */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+* {
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar for IE and old Edge */
+* {
+  -ms-overflow-style: none;
+}
