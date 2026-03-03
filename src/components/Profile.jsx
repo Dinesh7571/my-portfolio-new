@@ -188,7 +188,7 @@ const SKILLS = [
   { label: "JWT Authentication", icon: <SiJsonwebtokens /> },
   { label: "REST API", icon: <FiCode /> },
   { label: "Android Native Modules", icon: <SiKotlin /> },
-  { label: "Code Push", icon: <PushManager /> },
+  { label: "Code Push", icon: <FiCode /> },
 ];
 
 const STATS = [
