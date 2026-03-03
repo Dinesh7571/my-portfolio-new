@@ -422,7 +422,7 @@ export default function Portfolio() {
                 <article
                   key={i}
                   onClick={() => setModal(p)}
-                  className="group rounded-[20px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 overflow-hidden cursor-pointer hover:border-accent/50 hover:shadow-2xl dark:hover:shadow-black/60 hover:-translate-y-1 transition-all duration-300"
+                  className="group rounded-[14px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 overflow-hidden cursor-pointer hover:border-accent/50 hover:shadow-2xl dark:hover:shadow-black/60 hover:-translate-y-1 transition-all duration-300"
                 >
                   {/* thumbnail */}
                   {/* Keep 16:9 aspect ratio for thumbnail */}
@@ -588,7 +588,7 @@ export default function Portfolio() {
           onClick={() => setModal(null)}
         >
           <div
-            className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl w-full max-w-[600px] max-h-[90vh] overflow-y-auto animate-slideUp"
+            className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-[14px] w-full max-w-[600px] max-h-[90vh] overflow-y-auto animate-slideUp"
             onClick={(e) => e.stopPropagation()}
           >
             {/* video or placeholder */}
