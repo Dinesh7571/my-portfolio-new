@@ -50,14 +50,14 @@ const SKILL_ICONS = {
   "Docker": <FaDocker />,
   "AWS": <FaAws />,
   "Gemini API": <FiCode />,
-  "Git":<FaGit/>,
-  "GitHub":<FaGithub/>
+  "Git": <FaGit />,
+  "GitHub": <FaGithub />
 };
 
 function DemoIcon({ type }) {
   if (type === "youtube") return <FaYoutube />;
-  if (type === "drive")   return <FaGoogleDrive />;
-  if (type === "npm")     return <FaNpm />;
+  if (type === "drive") return <FaGoogleDrive />;
+  if (type === "npm") return <FaNpm />;
   return <FiExternalLink />;
 }
 
@@ -130,7 +130,7 @@ const PROJECTS = [
       "GitHub"
     ],
     isPrivateRepo: true,
-    github: "", 
+    github: "",
     demo: "https://youtu.be/U-zZ3CTtgxk?si=mFxwvZVjPe8QK8hP",
     demoType: "youtube",
     demoLabel: "Watch Demo"
@@ -172,17 +172,17 @@ const PROJECTS = [
 
 const SKILLS = [
   { label: "React Native", icon: <FaReact /> },
-  { label: "React.js",     icon: <FaReact /> },
-  { label: "Kotlin",       icon: <SiKotlin /> },
-  { label: "Node.js",      icon: <FaNodeJs /> },
-  { label: "Express",      icon: <SiExpress /> },
-  { label: "MongoDB",      icon: <SiMongodb /> },
+  { label: "React.js", icon: <FaReact /> },
+  { label: "Kotlin", icon: <SiKotlin /> },
+  { label: "Node.js", icon: <FaNodeJs /> },
+  { label: "Express", icon: <SiExpress /> },
+  { label: "MongoDB", icon: <SiMongodb /> },
   { label: "Docker", icon: <FaDocker /> },
   { label: "AWS", icon: <FaAws /> },
-  { label: "TypeScript",   icon: <SiTypescript /> },
+  { label: "TypeScript", icon: <SiTypescript /> },
   { label: "Tailwind CSS", icon: <SiTailwindcss /> },
-  { label: "Zustand",      icon: <FiCode /> },
-  { label: "Firebase",     icon: <SiFirebase /> },
+  { label: "Zustand", icon: <FiCode /> },
+  { label: "Firebase", icon: <SiFirebase /> },
   { label: "Headless JS", icon: <FiCode /> },
   { label: "Notifee", icon: <FaBell /> },
   { label: "JWT Authentication", icon: <SiJsonwebtokens /> },
@@ -194,23 +194,23 @@ const SKILLS = [
 const STATS = [
   { val: "1+", lbl: "Years Experience" },
   { val: "4+", lbl: "Projects Shipped" },
-  { val: "1",  lbl: "NPM Package" },
-  { val: "∞",  lbl: "Lines of Code" },
+  { val: "1", lbl: "NPM Package" },
+  { val: "∞", lbl: "Lines of Code" },
 ];
 
 const NAV_SECTIONS = ["home", "experience", "projects", "contact"];
 
 /* ─── component ─── */
 export default function Portfolio() {
-  const [dark, setDark]           = useState(true);
-  const [modal, setModal]         = useState(null);
-  const [active, setActive]       = useState("home");
+  const [dark, setDark] = useState(true);
+  const [modal, setModal] = useState(null);
+  const [active, setActive] = useState("home");
 
   const refs = {
-    home:       useRef(null),
+    home: useRef(null),
     experience: useRef(null),
-    projects:   useRef(null),
-    contact:    useRef(null),
+    projects: useRef(null),
+    contact: useRef(null),
   };
 
   /* sync dark class on <html> */
@@ -240,7 +240,21 @@ export default function Portfolio() {
 
   return (
     /* root: dark class applied to <html> via useEffect above */
-    <div className="bg-[#f7f7f5] dark:bg-[#0a0a0a] text-neutral-900 dark:text-[#efefed] min-h-screen font-sans transition-colors duration-300">
+    <div className="relative min-h-screen text-neutral-900 dark:text-[#efefed] font-sans transition-colors duration-300">
+
+      {/* Background Video */}
+      <video
+        className="absolute fixed top-0 left-0  object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+      >
+        <source src="/bg.mp4" type="video/mp4" />
+      </video>
+
+      {/* 🔥 Overlay */}
+      <div className="absolute inset-0  dark:bg-black/50  backdrop-blur-xm bg-[#f7f7f5]/70"></div>
 
       {/* Google Fonts */}
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap');`}</style>
@@ -275,15 +289,15 @@ export default function Portfolio() {
           </div>
 
           {/* dark toggle */}
-          <button
+          {/* <button
             onClick={() => setDark(!dark)}
             className="w-9 h-9 rounded-[10px] border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
           >
             {dark ? <FiSun size={15} /> : <FiMoon size={15} />}
-          </button>
+          </button> */}
         </div>
 
-        
+
       </nav>
 
       {/* ═══════════ PAGE CONTENT ═══════════ */}
@@ -313,11 +327,11 @@ export default function Portfolio() {
 
               <div className="flex flex-wrap gap-3 mb-9">
                 <a href="mailto:kannaujiya00000@gmail.com"
-                   className="inline-flex items-center gap-2 px-5 py-[10px] rounded-xl bg-accent text-[#0a0a0a] text-[13px] font-semibold hover:opacity-85 hover:-translate-y-px transition-all duration-200">
+                  className="inline-flex items-center gap-2 px-5 py-[10px] rounded-xl bg-accent text-[#0a0a0a] text-[13px] font-semibold hover:opacity-85 hover:-translate-y-px transition-all duration-200">
                   <FaEnvelope /> Get in Touch
                 </a>
                 <a href="https://github.com/Dinesh7571" target="_blank" rel="noreferrer"
-                   className="inline-flex items-center gap-2 px-5 py-[10px] rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 text-[13px] font-semibold hover:border-accent hover:text-accent hover:bg-accent/10 transition-all duration-200">
+                  className="inline-flex items-center gap-2 px-5 py-[10px] rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 text-[13px] font-semibold hover:border-accent hover:text-accent hover:bg-accent/10 transition-all duration-200">
                   <FaGithub /> GitHub
                 </a>
               </div>
@@ -330,7 +344,7 @@ export default function Portfolio() {
                   { icon: <FaLinkedin />, url: "https://www.linkedin.com/in/dinesh-kannaujiya-985719205", label: "LinkedIn" },
                 ].map((s) => (
                   <a key={s.label} href={s.url} target="_blank" rel="noreferrer" aria-label={s.label}
-                     className="w-10 h-10 rounded-xl border border-neutral-200 dark:border-neutral-800 flex items-center justify-center text-[18px] text-neutral-500 dark:text-neutral-400 hover:border-accent hover:text-accent hover:bg-accent/10 transition-all duration-200">
+                    className="w-10 h-10 rounded-xl border border-neutral-200 dark:border-neutral-800 flex items-center justify-center text-[18px] text-neutral-500 dark:text-neutral-400 hover:border-accent hover:text-accent hover:bg-accent/10 transition-all duration-200">
                     {s.icon}
                   </a>
                 ))}
@@ -350,7 +364,7 @@ export default function Portfolio() {
             <div className="flex flex-wrap gap-[10px]">
               {SKILLS.map((s) => (
                 <div key={s.label}
-                     className="inline-flex items-center gap-[6px] px-[13px] py-[7px] rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 text-neutral-500 dark:text-neutral-400 text-[12px] font-medium cursor-default hover:border-accent hover:text-accent hover:bg-accent/10 transition-all duration-200">
+                  className="inline-flex items-center gap-[6px] px-[13px] py-[7px] rounded-full border border-neutral-200 dark:border-green-800 bg-neutral-100 dark:bg-neutral-900 text-neutral-500 dark:text-neutral-400 text-[12px] font-medium cursor-default hover:border-accent hover:text-accent hover:bg-accent/10 transition-all duration-200">
                   <span className="text-[13px]">{s.icon}</span> {s.label}
                 </div>
               ))}
@@ -361,7 +375,7 @@ export default function Portfolio() {
           <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4">
             {STATS.map((s) => (
               <div key={s.lbl}
-                   className="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 hover:shadow-lg dark:hover:shadow-black/50 hover:-translate-y-px transition-all duration-200">
+                className="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 hover:shadow-lg dark:hover:shadow-black/50 hover:-translate-y-px transition-all duration-200">
                 <div className="text-[28px] font-extrabold text-accent leading-none mb-1">{s.val}</div>
                 <div className="text-[12px] text-neutral-500 dark:text-neutral-400 font-medium">{s.lbl}</div>
               </div>
@@ -377,7 +391,7 @@ export default function Portfolio() {
           <div className="flex flex-col gap-4 max-w-3xl">
             {EXPERIENCE.map((exp, i) => (
               <div key={i}
-                   className="p-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 hover:border-accent/30 hover:shadow-lg dark:hover:shadow-black/40 transition-all duration-250">
+                className="p-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 hover:border-accent/30 hover:shadow-lg dark:hover:shadow-black/40 transition-all duration-250">
                 <div className="flex flex-wrap justify-between gap-3 mb-4">
                   <div>
                     <div className="font-bold text-[16px] mb-1">{exp.role}</div>
@@ -470,7 +484,7 @@ export default function Portfolio() {
                     <div className="flex flex-wrap gap-[6px]">
                       {p.tech.slice(0, 3).map((t) => (
                         <span key={t}
-                              className="inline-flex items-center gap-[5px] px-[10px] py-[3px] rounded-xl text-[11px] font-medium border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400">
+                          className="inline-flex items-center gap-[5px] px-[10px] py-[3px] rounded-xl text-[11px] font-medium border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400">
                           <span className="text-[11px]">{SKILL_ICONS[t] || <FiCode />}</span> {t}
                         </span>
                       ))}
@@ -531,8 +545,8 @@ export default function Portfolio() {
               <p className="text-[11px] font-bold tracking-[.12em] uppercase text-neutral-400 dark:text-neutral-500 mb-4">Reach me directly</p>
               <div className="flex flex-col gap-[10px] mb-5">
                 {[
-                  { icon: <FaEnvelope />, label: "kannaujiya00000@gmail.com", sub: "Email",    url: "mailto:kannaujiya00000@gmail.com" },
-                  { icon: <FaGithub />,   label: "github.com/Dinesh7571",      sub: "GitHub",   url: "https://github.com/Dinesh7571" },
+                  { icon: <FaEnvelope />, label: "kannaujiya00000@gmail.com", sub: "Email", url: "mailto:kannaujiya00000@gmail.com" },
+                  { icon: <FaGithub />, label: "github.com/Dinesh7571", sub: "GitHub", url: "https://github.com/Dinesh7571" },
                   { icon: <FaLinkedin />, label: "linkedin.com/in/dinesh-kannaujiya", sub: "LinkedIn", url: "https://www.linkedin.com/in/dinesh-kannaujiya-985719205" },
                 ].map((link) => (
                   <a
@@ -558,8 +572,8 @@ export default function Portfolio() {
               <div className="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-accent/5">
                 <p className="text-[11px] font-bold text-accent uppercase tracking-[.1em] mb-4">Quick Info</p>
                 {[
-                  { l: "Location",      v: "Deoria, UP, India" },
-                  { l: "Status",        v: "Open to roles" },
+                  { l: "Location", v: "Deoria, UP, India" },
+                  { l: "Status", v: "Open to roles" },
                   { l: "Response time", v: "Within 24 hours" },
                 ].map((r) => (
                   <div key={r.l} className="flex justify-between text-[13px] mb-[10px] last:mb-0">
@@ -631,7 +645,7 @@ export default function Portfolio() {
               <div className="flex flex-wrap gap-2 mb-6">
                 {modal.tech.map((t) => (
                   <span key={t}
-                        className="inline-flex items-center gap-[6px] px-[13px] py-[7px] rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 text-neutral-500 dark:text-neutral-400 text-[12px] font-medium hover:border-accent hover:text-accent hover:bg-accent/10 transition-all duration-200">
+                    className="inline-flex items-center gap-[6px] px-[13px] py-[7px] rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 text-neutral-500 dark:text-neutral-400 text-[12px] font-medium hover:border-accent hover:text-accent hover:bg-accent/10 transition-all duration-200">
                     <span className="text-[13px]">{SKILL_ICONS[t] || <FiCode />}</span> {t}
                   </span>
                 ))}
@@ -648,12 +662,12 @@ export default function Portfolio() {
                   </button>
                 ) : (
                   <a href={modal.github} target="_blank" rel="noreferrer"
-                     className="flex-1 inline-flex justify-center items-center gap-2 px-5 py-[10px] rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 text-[13px] font-semibold hover:border-accent hover:text-accent hover:bg-accent/10 transition-all duration-200">
+                    className="flex-1 inline-flex justify-center items-center gap-2 px-5 py-[10px] rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 text-[13px] font-semibold hover:border-accent hover:text-accent hover:bg-accent/10 transition-all duration-200">
                     <FaGithub /> View Code
                   </a>
                 )}
                 <a href={modal.demo} target="_blank" rel="noreferrer"
-                   className="flex-1 inline-flex justify-center items-center gap-2 px-5 py-[10px] rounded-xl bg-accent text-[#0a0a0a] text-[13px] font-semibold hover:opacity-85 transition-all duration-200">
+                  className="flex-1 inline-flex justify-center items-center gap-2 px-5 py-[10px] rounded-xl bg-accent text-[#0a0a0a] text-[13px] font-semibold hover:opacity-85 transition-all duration-200">
                   <DemoIcon type={modal.demoType} /> {modal.demoLabel}
                 </a>
               </div>
